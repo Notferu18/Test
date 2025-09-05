@@ -29,7 +29,7 @@ function LoginPage({ onSwitch }) {                             // Function compo
   }
 
   return (
-    <div className="login-container">                 // Main container
+    <div className="login-container">           
       <div className="login-box">
         <h2>Login</h2>
         {error && <p className="error">{error}</p>}

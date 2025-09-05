@@ -1,14 +1,15 @@
 import { useState } from "react";
+import "./RegisterPage.css";
 
-function RegisterPage({ onSwitch }) {      // Funct component
+function RegisterPage({ onSwitch }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-   
+
     if (!username || !password || !confirm) {
       setError("All fields are required."); //walay unod
       return;
@@ -22,8 +23,8 @@ function RegisterPage({ onSwitch }) {      // Funct component
     onSwitch();
   }
 
-    return (
-    <div className="register-container">           //Main container//
+  return (
+    <div className="register-container">
       <div className="register-box">
         <h2>Register</h2>
         {error && <p className="error">{error}</p>}

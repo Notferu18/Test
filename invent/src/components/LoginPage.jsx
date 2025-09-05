@@ -1,8 +1,8 @@
 import { useState, useContext, useEffect } from "react";
-import AuthContext from "../AuthContext";
+import AuthContext from "../AuthContext";   
 import "./LoginPage.css";
 
-function LoginPage({ onSwitch }) {                             // Function component
+function LoginPage({ onSwitch }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -15,12 +15,12 @@ function LoginPage({ onSwitch }) {                             // Function compo
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (username === "" || password === "") {                   // Check for empty fields
-      setError("Please fill in");
+    if (username === "" || password === "") {
+      setError("Please fill in all fields.");
       return;
     }
-      
-    if (username === "admin" && password === "123") {           // Check for valid credentials
+
+    if (username === "lipra" && password === "1234") {
       setUser({ name: username });
       alert("Login successful!");
     } else {
@@ -29,7 +29,7 @@ function LoginPage({ onSwitch }) {                             // Function compo
   }
 
   return (
-    <div className="login-container">           
+    <div className="login-container">
       <div className="login-box">
         <h2>Login</h2>
         {error && <p className="error">{error}</p>}
@@ -52,13 +52,13 @@ function LoginPage({ onSwitch }) {                             // Function compo
               placeholder="Enter password"
             />
           </div>
-          <button type="submit">Login</button>
+          <button type="submit" className="login-btn">
+            Login
+          </button>
         </form>
         <p className="signup-text">
           Don’t have an account?{" "}
-          <button onClick={onSwitch} className="switch-btn">
-            Sign up
-          </button>
+          <button onClick={onSwitch} className="switch-btn">Sign up</button>
         </p>
       </div>
     </div>

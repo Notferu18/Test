@@ -6,7 +6,7 @@ export function AuthProvider({ children }) {
   const [isRegistering, setIsRegistering] = useState(false);
   const [users, setUsers] = useState([{ username: "admin", password: "1234" }]);
 
-  function registerUser(newUser) {
+  function registerUser(newUser) {        // Register new user
     const usernameExists = users.some(
       (user) => user.username === newUser.username
     );
@@ -19,7 +19,7 @@ export function AuthProvider({ children }) {
     setIsRegistering(false);
   }
 
-  function login(username, password) {
+  function login(username, password) {                // Login
     const foundUser = users.find(
       (user) => user.username === username && user.password === password
     );
@@ -33,8 +33,8 @@ export function AuthProvider({ children }) {
   function logout() {
     setCurrentUser(null);
   }
-
-  return (
+ 
+  return (                                
     <AuthContext.Provider
       value={{
         currentUser,

@@ -1,0 +1,83 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #eef2f7;
+  font-family: Arial, sans-serif;
+}
+
+.register-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  width: 320px;
+  text-align: center;
+}
+
+.register-box h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  color: #222;
+}
+
+.register-form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.register-form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #555;
+}
+
+.register-form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+.register-form-group input:focus {
+  border: 1px solid #28a745;
+}
+
+.register-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #28a745;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.register-btn:hover {
+  background: #1e7e34;
+}
+
+.register-error {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.register-switch {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.register-switch a {
+  color: #28a745;
+  text-decoration: none;
+}
+
+.register-switch a:hover {
+  text-decoration: underline;
+}

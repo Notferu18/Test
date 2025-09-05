@@ -6,7 +6,7 @@ export function AuthProvider({ children }) {
   const [isRegistering, setIsRegistering] = useState(false);
   const [users, setUsers] = useState([{ username: "admin", password: "1234" }]);
 
-  function registerUser(newUser) {        // Register new user
+  function registerUser(newUser) {        // Register the new user
     const usernameExists = users.some(
       (user) => user.username === newUser.username
     );
@@ -19,7 +19,7 @@ export function AuthProvider({ children }) {
     setIsRegistering(false);
   }
 
-  function login(username, password) {                // Login
+  function login(username, password) {             // Login Thing Part
     const foundUser = users.find(
       (user) => user.username === username && user.password === password
     );
@@ -35,7 +35,7 @@ export function AuthProvider({ children }) {
   }
  
   return (                                
-    <AuthContext.Provider
+    <AuthContext.Provider                      
       value={{
         currentUser,
         setCurrentUser,

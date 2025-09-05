@@ -1,7 +1,8 @@
 import { useState, useContext, useEffect } from "react";
 import AuthContext from "../AuthContext";
+import "./LoginPage.css";
 
-function LoginPage({ onSwitch }) {
+function LoginPage({ onSwitch }) {                             // Function component
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -14,12 +15,12 @@ function LoginPage({ onSwitch }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (username === "" || password === "") {
+    if (username === "" || password === "") {                   // Check for empty fields
       setError("Please fill in");
       return;
     }
-
-    if (username === "admin" && password === "123") {
+      
+    if (username === "admin" && password === "123") {           // Check for valid credentials
       setUser({ name: username });
       alert("Login successful!");
     } else {
@@ -28,7 +29,7 @@ function LoginPage({ onSwitch }) {
   }
 
   return (
-    <div className="login-container">
+    <div className="login-container">                 // Main container
       <div className="login-box">
         <h2>Login</h2>
         {error && <p className="error">{error}</p>}

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "./RegisterPage.css";
+import '../styles/RegisterPage.css';
+
 
 function RegisterPage({ onSwitch }) {
   const [username, setUsername] = useState("");

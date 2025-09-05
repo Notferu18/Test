@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import AuthContext from "../AuthContext";   
-import "./LoginPage.css";
+import '../styles/LoginPage.css';
+
 
 function LoginPage({ onSwitch }) {
   const [username, setUsername] = useState("");

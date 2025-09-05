@@ -12,24 +12,35 @@ function LoginPage({ onSwitch }) {
     setError("");
   }, [username, password]);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    fetch("http://localhost/inventory_api/login.php", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          setUser({ name: username });
-          alert("Login successful!");
-        } else {
-          setError(data.message || "Invalid username or password.");
-        }
-      })
-      .catch((err) => setError("Server error: " + err.message));
+    if (username === "" || password === "") {
+      setError("Please fill in all fields.");
+      return;
+    }
+
+    try {
+      const res = await fetch("http://localhost/inventory_api/login.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setUser({ name: username });
+        alert("Login successful!");
+      } else {
+        setError(data.message || "Invalid username or password.");
+      }
+    } catch (err) {
+      console.error(err);
+      setError("Something went wrong. Please try again.");
+    }
   }
 
   return (

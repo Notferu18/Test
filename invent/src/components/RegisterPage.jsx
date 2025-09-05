@@ -24,24 +24,21 @@ function RegisterPage({ onSwitch }) {
         "http://localhost/inventory_api/register.php",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username, password }),
         }
       );
 
-      const data = await response.json();
+      const result = await response.json();
 
-      if (data.success) {
+      if (result.success) {
         alert("Account registered successfully!");
         onSwitch();
       } else {
-        setError(data.message || "Registration failed.");
+        setError(result.message);
       }
-    } catch (err) {
-      console.error("Error:", err);
-      setError("Something went wrong.");
+    } catch (error) {
+      setError("Something went wrong. Try again.");
     }
   }
 

@@ -25,23 +25,43 @@ function LoginPage({ onSwitch }) {
     } else {
       setError("Invalid username or password.");
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   }
+
+  return (
+    <div className="login-container">
+      <div className="login-box">
+        <h2>Login</h2>
+        {error && <p className="error">{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Username</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter username"
+            />
+          </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter password"
+            />
+          </div>
+          <button type="submit">Login</button>
+        </form>
+        <p className="signup-text">
+          Don’t have an account?{" "}
+          <button onClick={onSwitch} className="switch-btn">
+            Sign up
+          </button>
+        </p>
+      </div>
+    </div>
+  );
 }
+
+export default LoginPage;

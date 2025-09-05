@@ -1,7 +1,6 @@
 import { useState, useContext, useEffect } from "react";
-import AuthContext from "../AuthContext";   
-import '../styles/LoginPage.css';
-
+import AuthContext from "../AuthContext";
+import "../styles/LoginPage.css";
 
 function LoginPage({ onSwitch }) {
   const [username, setUsername] = useState("");
@@ -16,17 +15,21 @@ function LoginPage({ onSwitch }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (username === "" || password === "") {
-      setError("Please fill in all fields.");
-      return;
-    }
-
-    if (username === "lipra" && password === "1234") {
-      setUser({ name: username });
-      alert("Login successful!");
-    } else {
-      setError("Invalid username or password.");
-    }
+    fetch("http://localhost/inventory_api/login.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setUser({ name: username });
+          alert("Login successful!");
+        } else {
+          setError(data.message || "Invalid username or password.");
+        }
+      })
+      .catch((err) => setError("Server error: " + err.message));
   }
 
   return (
@@ -59,7 +62,9 @@ function LoginPage({ onSwitch }) {
         </form>
         <p className="signup-text">
           Don’t have an account?{" "}
-          <button onClick={onSwitch} className="switch-btn">Sign up</button>
+          <button onClick={onSwitch} className="switch-btn">
+            Sign up
+          </button>
         </p>
       </div>
     </div>

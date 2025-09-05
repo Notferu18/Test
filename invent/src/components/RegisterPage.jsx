@@ -1,6 +1,5 @@
 import { useState } from "react";
-import '../styles/RegisterPage.css';
-
+import "../styles/RegisterPage.css";
 
 function RegisterPage({ onSwitch }) {
   const [username, setUsername] = useState("");
@@ -8,20 +7,42 @@ function RegisterPage({ onSwitch }) {
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState("");
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     if (!username || !password || !confirm) {
-      setError("All fields are required."); //walay unod
+      setError("All fields are required.");
       return;
     }
     if (password !== confirm) {
-      setError("Passwords do not match.");  //password 
+      setError("Passwords do not match.");
       return;
     }
 
-    alert("Account registered successfully!");  //successful registration
-    onSwitch();
+    try {
+      const response = await fetch(
+        "http://localhost/inventory_api/register.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, password }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert("Account registered successfully!");
+        onSwitch();
+      } else {
+        setError(data.message || "Registration failed.");
+      }
+    } catch (err) {
+      console.error("Error:", err);
+      setError("Something went wrong.");
+    }
   }
 
   return (
@@ -63,7 +84,9 @@ function RegisterPage({ onSwitch }) {
         </form>
         <p className="switch-text">
           Already have an account?{" "}
-          <button onClick={onSwitch} className="switch-btn">Login</button>
+          <button onClick={onSwitch} className="switch-btn">
+            Login
+          </button>
         </p>
       </div>
     </div>

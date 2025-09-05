@@ -1,7 +1,6 @@
 import { useContext } from "react";
-import AuthContext from "../AuthContext";   
-import '../styles/Dashboard.css';
-
+import AuthContext from "../AuthContext";
+import "../styles/Dashboard.css";
 
 function Dashboard() {
   const { user, setUser } = useContext(AuthContext);
@@ -13,7 +12,7 @@ function Dashboard() {
   return (
     <div className="dashboard-container">
       <h1>Welcome, {user?.name}!</h1>
-      <button onClick={handleLogout} className="logout-btn"> 
+      <button onClick={handleLogout} className="logout-btn">
         Logout
       </button>
     </div>

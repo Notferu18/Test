@@ -17,8 +17,23 @@ function registerUser(newUser) {
     setIsRegistering(false);
   }
 
+  function login(username, password) {
+    const foundUser = users.find(
+      (user) => user.username === username && user.password === password
+    );
+    if (foundUser) {
+      setCurrentUser(foundUser);
+      return true;
+    }
+    return false;
+  }
 
-  
+  function logout() {
+    setCurrentUser(null);
+  }
+
+
+
 
 
 

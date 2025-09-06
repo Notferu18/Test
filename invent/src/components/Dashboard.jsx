@@ -12,7 +12,8 @@ function Dashboard() {
   return (
     <div className="dashboard-container">
       <div className="dashboard-box">
-        <h1>Hello, {user?.name}!</h1>
+        <h1>Hellooo, {user?.name?.split('@')[0]}!!</h1>
+
 
         <button onClick={handleLogout} className="logout-btn">
           Logout

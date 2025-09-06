@@ -19,7 +19,7 @@
   border-radius: 12px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
   width: 320px;
-  text-align: center;
+  text-align: left;
 }
 
 .login-box h2 {

@@ -30,6 +30,7 @@ function LoginPage({ onSwitch }) {
     }
 
     async function sendLoginRequest() {
+      window.localStorage.setItem("isLoggedIn", true);
       const res = await fetch("http://localhost/inventory_api/login.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

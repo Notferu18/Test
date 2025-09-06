@@ -2,7 +2,7 @@ import { useContext } from "react";
 import AuthContext from "../AuthContext";
 import "../styles/Dashboard.css";
 
-function Dashboard() {                  // The Dashboardddddd!!
+function Dashboard() {                  // Dashboard 
   const { user, setUser } = useContext(AuthContext);
 
   function handleLogout() {
@@ -11,7 +11,7 @@ function Dashboard() {                  // The Dashboardddddd!!
 
   return (
     <div className="dashboard-container">      
-      <h1>Hellooo, {user?.name}!</h1>
+      <h1>Hello, {user?.name}!</h1>
       <button onClick={handleLogout} className="logout-btn">
         Logout
       </button>

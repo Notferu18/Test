@@ -62,7 +62,7 @@ function LoginPage({ onSwitch }) {
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Username</label>
+            <label>UserID</label>
             <input
               type="text"
               value={username}
@@ -86,7 +86,7 @@ function LoginPage({ onSwitch }) {
         <p className="signup-text">
           Don’t have an account?{" "}
           <button onClick={onSwitch} className="switch-btn">
-            Sign up
+            Register
           </button>
         </p>
       </div>

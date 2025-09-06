@@ -11,7 +11,7 @@ export function AuthProvider({ children }) {
       (user) => user.username === newUser.username
     );
     if (usernameExists) {
-      alert("Username already exists!");
+      alert("UserID already exists!");
       return;
     }
     setUsers([...users, newUser]);

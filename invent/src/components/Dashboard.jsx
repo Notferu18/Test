@@ -2,7 +2,7 @@ import { useContext } from "react";
 import AuthContext from "../AuthContext";
 import "../styles/Dashboard.css";
 
-function Dashboard() {                  // Dashboard 
+function Dashboard() {                  // Dashboard!!!
   const { user, setUser } = useContext(AuthContext);
 
   function handleLogout() {

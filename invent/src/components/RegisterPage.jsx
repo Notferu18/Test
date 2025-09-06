@@ -49,12 +49,12 @@ function RegisterPage({ onSwitch }) {
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Username</label>
+            <label>UserID</label>
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="Choose a username"
+              placeholder="Create a UserID"
             />
           </div>
           <div className="form-group">
@@ -82,7 +82,7 @@ function RegisterPage({ onSwitch }) {
         <p className="switch-text">
           Already have an account?{" "}
           <button onClick={onSwitch} className="switch-btn">
-            Login
+            Login here
           </button>
         </p>
       </div>

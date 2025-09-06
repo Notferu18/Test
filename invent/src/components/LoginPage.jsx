@@ -39,7 +39,7 @@ function LoginPage({ onSwitch }) {
       } else {
         setError(
           data.message ||
-            "Invalid username/email or password. Please try again."
+            "Invalid userid or password. Please try again."
         );
       }
     }
@@ -55,7 +55,7 @@ function LoginPage({ onSwitch }) {
     }
   }
 
-  return (                                  //
+  return (                                  
     <div className="login-container">
       <div className="login-box">
         <h2>Login</h2>
@@ -67,7 +67,7 @@ function LoginPage({ onSwitch }) {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter username"
+              placeholder="Enter your UserID"
             />
           </div>
           <div className="form-group">
@@ -76,7 +76,7 @@ function LoginPage({ onSwitch }) {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter password"
+              placeholder="Enter your password"
             />
           </div>
           <button type="submit" className="login-btn">
@@ -86,7 +86,7 @@ function LoginPage({ onSwitch }) {
         <p className="signup-text">
           Don’t have an account?{" "}
           <button onClick={onSwitch} className="switch-btn">
-            Register
+            Register here
           </button>
         </p>
       </div>

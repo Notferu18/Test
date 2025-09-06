@@ -35,7 +35,7 @@ function LoginPage({ onSwitch }) {
     function handleResponse(data) {        // handle response data keneme
       if (data.success) {
         setUser({ name: username });
-        alert("Login successful!");
+        alert("Login successful! you will be redirected to the dashboard.");
       } else {
         setError(                      // error message
           data.message ||                      

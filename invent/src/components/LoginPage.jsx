@@ -15,28 +15,40 @@ function LoginPage({ onSwitch }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (username === "" || password === "") {
-      setError("Please fill in all fields.");
-      return;
+    function inputsInvalid() {
+      if (username === "" || password === "") {
+        setError("Please fill in all fields.");
+        return true;
+      }
+      return false;
     }
 
-    try {
+    async function sendLoginRequest() {
       const res = await fetch("http://localhost/inventory_api/login.php", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
       });
+      return await res.json();
+    }
 
-      const data = await res.json();
-
+    function handleResponse(data) {
       if (data.success) {
         setUser({ name: username });
         alert("Login successful!");
       } else {
-        setError(data.message || "Invalid username or password.");
+        setError(
+          data.message ||
+            "Invalid username/email or password. Please try again."
+        );
       }
+    }
+
+    if (inputsInvalid()) return;
+
+    try {
+      const data = await sendLoginRequest();
+      handleResponse(data);
     } catch (err) {
       console.error(err);
       setError("Something went wrong. Please try again.");

@@ -25,7 +25,7 @@ function RegisterPage({ onSwitch }) {
       setError("Passwords do not match.");
       return;
     }
-
+    
     try {
       const response = await fetch(
         "http://localhost/inventory_api/register.php",

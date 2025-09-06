@@ -7,7 +7,7 @@ import Dashboard from "./components/Dashboard";
 function App() {            
 
   const [user, setUser] = useState(null);
-  const [isRegistering, setIsRegistering] = useState(false);                  // Track if user is on registration page
+  const [isRegistering, setIsRegistering] = useState(false);    // Track if user is on registration page
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>            

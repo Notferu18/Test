@@ -9,6 +9,7 @@ function LoginPage({ onSwitch }) {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const { setUser } = useContext(AuthContext);
+  const minLength = 4; 
 
   useEffect(() => {
     setError("");
@@ -26,11 +27,14 @@ function LoginPage({ onSwitch }) {
         setError("Please enter a valid email address.");
         return true;
       }
+      if (password.length < minLength) {
+        setError(`Password must be at least ${minLength} characters.`);
+        return true;
+      }
       return false;
     }
 
     async function sendLoginRequest() {
-      window.localStorage.setItem("isLoggedIn", true);
       const res = await fetch("http://localhost/inventory_api/login.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -42,7 +46,8 @@ function LoginPage({ onSwitch }) {
     function handleResponse(data) {
       if (data.success) {
         setUser({ name: username });
-        alert("Login successful! you will be redirected to the dashboard.");
+        window.localStorage.setItem("user", JSON.stringify({ name: username })); // persist login
+        alert("Login successful! You will be redirected to the dashboard.");
       } else {
         setError(
           data.message || "Invalid email or password. Please try again."
@@ -84,6 +89,8 @@ function LoginPage({ onSwitch }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
+                minLength={minLength}
+                maxLength={12}
               />
               <span
                 className="toggle-password"

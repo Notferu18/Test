@@ -12,20 +12,6 @@ function RegisterPage({ onSwitch }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
-    if (!username || !password || !confirm) {
-      setError("All fields are required.");
-      return;
-    }
-    if (!username.includes("@")) {
-      setError("Please enter a valid email address.");
-      return;
-    }
-    if (password !== confirm) {
-      setError("Passwords do not match.");
-      return;
-    }
-    
     try {
       const response = await fetch(
         "http://localhost/inventory_api/register.php",
@@ -72,6 +58,8 @@ function RegisterPage({ onSwitch }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Create a password"
+                maxLength={12} 
+                minLength={4}
               />
               <span
                 className="toggle-password"

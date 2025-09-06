@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import AuthContext from "../AuthContext";
 import "../styles/LoginPage.css";
 
@@ -6,6 +7,7 @@ function LoginPage({ onSwitch }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const { setUser } = useContext(AuthContext);
 
   useEffect(() => {
@@ -20,11 +22,14 @@ function LoginPage({ onSwitch }) {
         setError("Please fill in all fields.");
         return true;
       }
+      if (!username.includes("@")) {
+        setError("Please enter a valid email address.");
+        return true;
+      }
       return false;
     }
 
     async function sendLoginRequest() {
-      // e send ang request to backend
       const res = await fetch("http://localhost/inventory_api/login.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -34,14 +39,12 @@ function LoginPage({ onSwitch }) {
     }
 
     function handleResponse(data) {
-      // handle response data keneme
       if (data.success) {
         setUser({ name: username });
         alert("Login successful! you will be redirected to the dashboard.");
       } else {
         setError(
-          // error message
-          data.message || "Invalid userid or password. Please try again."
+          data.message || "Invalid email or password. Please try again."
         );
       }
     }
@@ -49,7 +52,6 @@ function LoginPage({ onSwitch }) {
     if (inputsInvalid()) return;
 
     try {
-      // send the request
       const data = await sendLoginRequest();
       handleResponse(data);
     } catch (err) {
@@ -65,22 +67,30 @@ function LoginPage({ onSwitch }) {
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>UserID</label>
+            <label>Email</label>
             <input
-              type="text"
+              type="email"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter your UserID"
+              placeholder="Enter your email"
             />
           </div>
-          <div className="form-group">
+          <div className="form-group password-group">
             <label>Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
-            />
+            <div className="password-wrapper">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
+              />
+              <span
+                className="toggle-password"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
           </div>
           <button type="submit" className="login-btn">
             Login

@@ -96,3 +96,33 @@
 .switch-btn:hover {
   text-decoration: underline;
 }
+
+.password-group {
+  position: relative;
+}
+
+.password-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px; 
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #aaa;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-password:hover {
+  color: #fff;
+}

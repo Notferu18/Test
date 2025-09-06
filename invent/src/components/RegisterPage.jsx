@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; 
 import "../styles/RegisterPage.css";
 
 function RegisterPage({ onSwitch }) {
@@ -6,11 +7,18 @@ function RegisterPage({ onSwitch }) {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState(""); 
+  const [showPassword, setShowPassword] = useState(false); 
+  const [showConfirm, setShowConfirm] = useState(false);   
+
   async function handleSubmit(e) {
     e.preventDefault();
 
     if (!username || !password || !confirm) {
       setError("All fields are required.");
+      return;
+    }
+    if (!username.includes("@")) {
+      setError("Please enter a valid email address.");
       return;
     }
     if (password !== confirm) {
@@ -48,31 +56,46 @@ function RegisterPage({ onSwitch }) {
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>UserID</label>
+            <label>Email</label>
             <input
-              type="text"
+              type="email"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="Create a UserID"
+              placeholder="Enter your email"
             />
           </div>
-          <div className="form-group">
+          <div className="form-group password-group">
             <label>Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Create a password"
-            />
+            <div className="password-wrapper">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Create a password"
+              />
+              <span
+                className="toggle-password"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
           </div>
-          <div className="form-group">
+          <div className="form-group password-group">
             <label>Confirm Password</label>
-            <input
-              type="password"
-              value={confirm}
-              onChange={(e) => setConfirm(e.target.value)}
-              placeholder="Confirm password"
-            />
+            <div className="password-wrapper">
+              <input
+                type={showConfirm ? "text" : "password"}
+                value={confirm}
+                onChange={(e) => setConfirm(e.target.value)}
+                placeholder="Confirm password"
+              />
+              <span
+                className="toggle-password"
+                onClick={() => setShowConfirm(!showConfirm)}
+              >
+              </span>
+            </div>
           </div>
           <button type="submit" className="register-btn">
             Register

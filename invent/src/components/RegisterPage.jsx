@@ -5,8 +5,7 @@ function RegisterPage({ onSwitch }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
-  const [error, setError] = useState("");
-
+  const [error, setError] = useState(""); 
   async function handleSubmit(e) {
     e.preventDefault();
 

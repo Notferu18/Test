@@ -6,7 +6,7 @@ export function AuthProvider({ children }) {
   const [isRegistering, setIsRegistering] = useState(false);
   const [users, setUsers] = useState([{ username: "admin", password: "1234" }]);
 
-  function registerUser(newUser) {        // Register the new user
+  function registerUser(newUser) {  // Register the new user
     const usernameExists = users.some(
       (user) => user.username === newUser.username
     );

@@ -2,7 +2,6 @@ import { useState, useContext, useEffect } from "react";
 import AuthContext from "../AuthContext";
 import "../styles/LoginPage.css";
 
-
 function LoginPage({ onSwitch }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -24,7 +23,8 @@ function LoginPage({ onSwitch }) {
       return false;
     }
 
-    async function sendLoginRequest() {         // e send ang request to backend                           
+    async function sendLoginRequest() {
+      // e send ang request to backend
       const res = await fetch("http://localhost/inventory_api/login.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -33,21 +33,23 @@ function LoginPage({ onSwitch }) {
       return await res.json();
     }
 
-    function handleResponse(data) {        // handle response data keneme
+    function handleResponse(data) {
+      // handle response data keneme
       if (data.success) {
         setUser({ name: username });
         alert("Login successful! you will be redirected to the dashboard.");
       } else {
-        setError(                      // error message
-          data.message ||                      
-            "Invalid userid or password. Please try again."
+        setError(
+          // error message
+          data.message || "Invalid userid or password. Please try again."
         );
       }
     }
 
-    if (inputsInvalid()) return;     
+    if (inputsInvalid()) return;
 
-    try {      // send the request
+    try {
+      // send the request
       const data = await sendLoginRequest();
       handleResponse(data);
     } catch (err) {
@@ -56,7 +58,7 @@ function LoginPage({ onSwitch }) {
     }
   }
 
-  return (                  
+  return (
     <div className="login-container">
       <div className="login-box">
         <h2>Login</h2>
@@ -71,8 +73,8 @@ function LoginPage({ onSwitch }) {
               placeholder="Enter your UserID"
             />
           </div>
-          <div className="form-group">         
-            <label>Password</label> 
+          <div className="form-group">
+            <label>Password</label>
             <input
               type="password"
               value={password}

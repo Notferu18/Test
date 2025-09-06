@@ -23,7 +23,7 @@ function LoginPage({ onSwitch }) {
       return false;
     }
 
-    async function sendLoginRequest() {                                
+    async function sendLoginRequest() {         // send the request to backend                           
       const res = await fetch("http://localhost/inventory_api/login.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -32,13 +32,13 @@ function LoginPage({ onSwitch }) {
       return await res.json();
     }
 
-    function handleResponse(data) {              // handle response data keneme
+    function handleResponse(data) {        // handle response data keneme
       if (data.success) {
         setUser({ name: username });
         alert("Login successful!");
       } else {
-        setError(
-          data.message ||
+        setError(                      // error message
+          data.message ||                      
             "Invalid userid or password. Please try again."
         );
       }
@@ -46,7 +46,7 @@ function LoginPage({ onSwitch }) {
 
     if (inputsInvalid()) return;
 
-    try {
+    try {      // send the request
       const data = await sendLoginRequest();
       handleResponse(data);
     } catch (err) {
@@ -55,7 +55,7 @@ function LoginPage({ onSwitch }) {
     }
   }
 
-  return (                                  
+  return (                 
     <div className="login-container">
       <div className="login-box">
         <h2>Login</h2>

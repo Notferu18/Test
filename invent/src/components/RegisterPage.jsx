@@ -32,13 +32,13 @@ function RegisterPage({ onSwitch }) {
       const result = await response.json();
 
       if (result.success) {
-        alert("Account registered successfully!");
+        alert("Registration successful! You can now log in.");
         onSwitch();
       } else {
         setError(result.message);
       }
     } catch (error) {
-      setError("Something went wrong. Try again.");
+      setError("Registration failed. Please try again.");
     }
   }
 

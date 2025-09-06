@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import AuthContext from "../AuthContext";
 import "../styles/LoginPage.css";
 
+
 function LoginPage({ onSwitch }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

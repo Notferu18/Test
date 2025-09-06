@@ -23,7 +23,7 @@ function LoginPage({ onSwitch }) {
       return false;
     }
 
-    async function sendLoginRequest() {         // send the request to backend                           
+    async function sendLoginRequest() {         // e send ang request to backend                           
       const res = await fetch("http://localhost/inventory_api/login.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -44,7 +44,7 @@ function LoginPage({ onSwitch }) {
       }
     }
 
-    if (inputsInvalid()) return;
+    if (inputsInvalid()) return;     
 
     try {      // send the request
       const data = await sendLoginRequest();
@@ -55,7 +55,7 @@ function LoginPage({ onSwitch }) {
     }
   }
 
-  return (                 
+  return (                  
     <div className="login-container">
       <div className="login-box">
         <h2>Login</h2>
@@ -70,8 +70,8 @@ function LoginPage({ onSwitch }) {
               placeholder="Enter your UserID"
             />
           </div>
-          <div className="form-group">
-            <label>Password</label>
+          <div className="form-group">         
+            <label>Password</label> 
             <input
               type="password"
               value={password}

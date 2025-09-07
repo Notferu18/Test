@@ -34,7 +34,7 @@ function RegisterPage({ onSwitch }) {
       setError("Registration failed. Please try again.");
     }
   }
-
+  
   return (
     <div className="register-container">
       <div className="register-box">

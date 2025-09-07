@@ -18,6 +18,7 @@ function LoginPage({ onSwitch }) {
   async function handleSubmit(e) {
     e.preventDefault();
 
+    
     function inputsInvalid() {
       if (username === "" || password === "") {
         setError("Please fill in all fields.");
@@ -67,6 +68,7 @@ function LoginPage({ onSwitch }) {
     }
   }
 
+  
   return (
     <div className="login-container">
       <div className="login-box">

@@ -36,7 +36,7 @@ export function AuthProvider({ children }) {
     setCurrentUser(null);
   }
 
-  //
+  
   return (
     <AuthContext.Provider
       value={{

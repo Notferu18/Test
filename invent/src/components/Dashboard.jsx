@@ -9,14 +9,6 @@ function Dashboard() {
     setUser(null);
   }
 
-  // Dummy data rani
-  const inventoryStats = [
-    { name: "Total Products", value: 100 },
-    { name: "Low Stock", value: 5 },
-    { name: "Orders Today", value: 20 },
-    { name: "Suppliers", value: 2 },
-  ];
-
   return (
     <div className="dashboard-container">
       <div className="dashboard-box">
@@ -24,15 +16,6 @@ function Dashboard() {
         <button onClick={handleLogout} className="logout-btn">
           Logout
         </button>
-
-        <div className="inventory-stats">
-          {inventoryStats.map((stat, index) => (
-            <div key={index} className="stat-card">
-              <h2>{stat.value}</h2>
-              <p>{stat.name}</p>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   );

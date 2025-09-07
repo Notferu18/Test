@@ -9,6 +9,7 @@ function Dashboard() {
     setUser(null);
   }
 
+  // Dummy data rani
   const inventoryStats = [
     { name: "Total Products", value: 100 },
     { name: "Low Stock", value: 5 },

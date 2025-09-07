@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa"; 
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "../styles/RegisterPage.css";
 
 function RegisterPage({ onSwitch }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
-  const [error, setError] = useState(""); 
-  const [showPassword, setShowPassword] = useState(false); 
-  const [showConfirm, setShowConfirm] = useState(false);   
+  const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -58,7 +58,7 @@ function RegisterPage({ onSwitch }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Create a password"
-                maxLength={12} 
+                maxLength={12}
                 minLength={4}
               />
               <span
@@ -81,8 +81,7 @@ function RegisterPage({ onSwitch }) {
               <span
                 className="toggle-password"
                 onClick={() => setShowConfirm(!showConfirm)}
-              >
-              </span>
+              ></span>
             </div>
           </div>
           <button type="submit" className="register-btn">

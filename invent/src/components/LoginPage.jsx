@@ -3,13 +3,13 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import AuthContext from "../AuthContext";
 import "../styles/LoginPage.css";
 
-function LoginPage({ onSwitch }) {
-  const [username, setUsername] = useState("");
+function LoginPage({ onSwitch }) {          
+  const [username, setUsername] = useState(""); 
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const { setUser } = useContext(AuthContext);
-  const minLength = 4; 
+  const minLength = 4;
 
   useEffect(() => {
     setError("");
@@ -34,8 +34,8 @@ function LoginPage({ onSwitch }) {
       return false;
     }
 
-    async function sendLoginRequest() {
-      const res = await fetch("http://localhost/inventory_api/login.php", {
+    async function sendLoginRequest() { // API Call
+      const res = await fetch("http://localhost/inventory_api/login.php", {  
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
@@ -45,8 +45,9 @@ function LoginPage({ onSwitch }) {
 
     function handleResponse(data) {
       if (data.success) {
+        // Successful login
         setUser({ name: username });
-        window.localStorage.setItem("user", JSON.stringify({ name: username })); // persist login
+        window.localStorage.setItem("user", JSON.stringify({ name: username })); 
         alert("Login successful! You will be redirected to the dashboard.");
       } else {
         setError(
@@ -94,7 +95,7 @@ function LoginPage({ onSwitch }) {
               />
               <span
                 className="toggle-password"
-                onClick={() => setShowPassword(!showPassword)}
+                onClick={() => setShowPassword(!showPassword)} // password visibility
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </span>
